@@ -1,3 +1,6 @@
+import { Link } from "react-router-dom";
+import LogoAsset from "./asset/LogoAsset";
+
 const GNB = [
   { mainTitle: "공연안내", subTitle: "Performance", link: "/performance" },
   { mainTitle: "공간 대관안내", subTitle: "Rental", link: "/rental" },
@@ -13,11 +16,19 @@ export default function Header() {
       <div className="w-full flex justify-center px-[80px]">
         <div className="w-full flex justify-center relative">
           {/* 메뉴리스트 */}
-          <div className="w-full flex justify-center items-center">
-            <div className="flex flex-col justify-center">
-              <h1 className="text-lg font-semibold">큰타이틀</h1>
-              <p className="uppercase text-sm font-light">작은타이틀</p>
-            </div>
+          <div className="w-full flex justify-center items-center space-x-8">
+            {GNB.map(({ mainTitle, subTitle, link }) => (
+              <Link key={mainTitle} to={link}>
+                <div className="flex flex-col justify-center">
+                  <h1 className="text-lg font-semibold">{mainTitle}</h1>
+                  <p className="uppercase text-sm font-light">{subTitle}</p>
+                </div>
+              </Link>
+            ))}
+          </div>
+          {/* LOGO */}
+          <div className="absolute left-0 h-full flex items-center">
+            <LogoAsset width="w-48" />
           </div>
         </div>
       </div>
