@@ -5,7 +5,7 @@ export default function Page() {
   return (
     <Layout>
       {/* 메인 캐러셀 이미지 */}
-      <div className="w-full">
+      <div className="w-full h-screen-minus-header overflow-hidden">
         <CarouselMain />
       </div>
     </Layout>
