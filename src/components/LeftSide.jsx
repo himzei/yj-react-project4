@@ -16,7 +16,10 @@ export default function LeftSide() {
     <div className="flex flex-col w-full space-y-6 items-center">
       {SNS_ITEMS.map(({ icon, link }) => (
         <Link to={link} key={link}>
-          <div className="w-10 h-10 border border-neutral-300 rounded-full flex justify-center items-center group overflow-hidden">
+          <div
+            className="w-10 h-10 border
+           border-neutral-300 rounded-full flex justify-center items-center group overflow-hidden"
+          >
             {icon}
           </div>
         </Link>
