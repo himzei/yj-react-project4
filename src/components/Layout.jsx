@@ -5,7 +5,7 @@ import RightSide from "./RightSide";
 
 export default function Layout({ children }) {
   return (
-    <div>
+    <div className="w-full">
       <Header />
       <div className="relative">
         <div className=" px-layout-padding">{children}</div>
