@@ -1,6 +1,6 @@
 export default function ButtonSlide({ text }) {
   return (
-    <div className="w-full">
+    <div className="">
       <button
         className="border border-neutral-400 px-6 py-1
       bg-gray-800 
