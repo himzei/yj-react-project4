@@ -2,6 +2,7 @@ export default function ButtonSlide({ text }) {
   return (
     <div className="">
       <button
+        type="submit"
         className="border border-neutral-400 px-6 py-1
       bg-gray-800 
       text-white 
