@@ -195,7 +195,7 @@ export default function Page() {
                 .fill("")
                 .map((_, i) => (
                   <div key={i}>
-                    <img
+                    <imagea
                       src={`https://www.daeguoperahouse.org/images/main/img_ban0${
                         i + 1
                       }_on.png`}
