@@ -5,6 +5,8 @@ import LayoutContents from "../components/LayoutContents";
 import { useForm } from "react-hook-form";
 import Modal from "react-modal";
 import DaumPostcodeEmbed from "react-daum-postcode";
+import { useMutation } from "react-query";
+import { userRegister } from "../api";
 
 export default function SignUp() {
   const [modalIsOpen, setIsOpen] = useState(false);
@@ -14,6 +16,7 @@ export default function SignUp() {
     register,
     handleSubmit,
     watch,
+    reset,
     formState: { errors },
   } = useForm({ mode: "onChange" });
 
@@ -42,8 +45,15 @@ export default function SignUp() {
     setAddressDetail(data.address);
   };
 
+  const { mutate } = useMutation(userRegister, {
+    onSuccess: () => {
+      reset();
+    },
+  });
+
   const onSubmit = (data) => {
     console.log(data);
+    mutate(data);
   };
 
   return (
