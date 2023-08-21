@@ -16,6 +16,7 @@ export default function Header() {
   const { userLoading, isLoggedIn, user, refetch } = useUser();
   const onLogout = async () => {
     await logout();
+    alert("로그아웃");
     refetch();
   };
 
