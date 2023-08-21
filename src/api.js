@@ -57,3 +57,23 @@ export async function userSignIn(props) {
     body: JSON.stringify(props),
   }).then((res) => res.json());
 }
+
+export async function loginSuccess() {
+  return await fetch(`${BASE_PATH}/api/users/login/success`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    credentials: "include",
+  }).then((res) => res.json());
+}
+
+export async function logout() {
+  return await fetch(`${BASE_PATH}/api/users/logout`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    credentials: "include",
+  }).then((res) => res.json());
+}

@@ -1,6 +1,8 @@
 import { Link } from "react-router-dom";
 import LogoAsset from "./asset/LogoAsset";
 import SearchAsset from "./asset/SearchAsset";
+import useUser from "../hooks/useUser";
+import { logout } from "../api";
 
 const GNB = [
   { mainTitle: "공연안내", subTitle: "Performance", link: "/information" },
@@ -11,6 +13,13 @@ const GNB = [
   { mainTitle: "대구엑스포", subTitle: "Contact", link: "/contact" },
 ];
 export default function Header() {
+  const { userLoading, isLoggedIn, user, refetch } = useUser();
+  const onLogout = async () => {
+    await logout();
+    refetch();
+  };
+
+  console.log(userLoading, isLoggedIn, user);
   return (
     <div className="w-full flex justify-center h-header-height shadow-md">
       {/* 좌우 여백을 위한 박스 */}
@@ -37,12 +46,22 @@ export default function Header() {
               <SearchAsset />
             </div>
             <div>Home</div>
-            <Link to="/signin">
-              <div>login</div>
-            </Link>
-            <Link to="/signup">
-              <div>join</div>
-            </Link>
+            {isLoggedIn === "true" ? (
+              <>
+                <div>{user.email}</div>
+                <div onClick={onLogout}>logout</div>
+              </>
+            ) : (
+              <>
+                <Link to="/signin">
+                  <div>login</div>
+                </Link>
+                <Link to="/signup">
+                  <div>join</div>
+                </Link>
+              </>
+            )}
+
             <select
               size="sm"
               className="border border-neutral-300 px-2 text-sm rounded-sm py-1"
